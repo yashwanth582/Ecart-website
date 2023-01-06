@@ -1,18 +1,48 @@
 import React from "react";
 
 class CartItem extends React.Component {
+    constructor(){
+        super()
+        this.state = {
+            price: 999,
+            title: 'Phone',
+            qty: 1,
+            img: ''
+        }
+        // this.increaseQuantity = this.increaseQuantity.bind(this)
+    }
+    increaseQuantity = () => {
+        console.log('this.state', this.state)
+    }
     render (){
-        return (
+        const {price, title, qty} = this.state;
+         return (
             <div className="cart-item">
                 <div className="left-block">
                 <img style={styles.image}/>
                 </div>
                 <div className="right-block">
-                <div style={{ fontSize: 35 }}>Phone</div>
-                <div style={{ color: '#777' }}>Rs 999</div>
-                <div style={{ color: '#777' }}>Qty: 1</div>
+                <div style={{ fontSize: 35 }}>{title}</div>
+                <div style={{ color: '#777' }}>Rs {price}</div>
+                <div style={{ color: '#777' }}>Qty: {qty}</div>
                 <div className="cart-item-actions">
                     {/* Buttons */}
+                    <img 
+                        alt="increase"
+                        className="action-icons"
+                        src="https://cdn-icons-png.flaticon.com/128/1828/1828926.png"
+                        onClick={this.increaseQuantity}
+                     />
+                    <img 
+                        alt="decrease" 
+                        className="action-icons" 
+                        src="https://cdn-icons-png.flaticon.com/128/1828/1828899.png" 
+                    />
+                    <img
+                         alt="delete" 
+                         className="action-icons" 
+                         src="https://t4.ftcdn.net/jpg/01/90/89/15/240_F_190891550_N7uKp2aHE3mOc20dmtDytj7atgvbhdOu.jpg" 
+                    />
                 </div>
                 </div>
             </div>
